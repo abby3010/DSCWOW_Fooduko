@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "619516259882",
+    "project_id": "fooduko-mobile-app-d5079",
+    "storage_bucket": "fooduko-mobile-app-d5079.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619516259882:android:a8c946ff8e9e694c5add53",
+        "android_client_info": {
+          "package_name": "com.example.fooduko"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619516259882-samu6fnmh8qbgfvvd4ft1oetg3r3tjnp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW2msYPpy3lKDFP0kxmklOVAHAz5pNKTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619516259882-samu6fnmh8qbgfvvd4ft1oetg3r3tjnp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
