@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -22,72 +21,6 @@ class FormScreenState extends State<FormScreen> {
   String _imageUrl;
   File _imageFile;
 
-  @override
-  void initState() {
-    super.initState();
-
-
-    _showImage() {
-      if (_imageFile == null && _imageUrl == null) {
-        return Text("image placeholder");
-      } else if (_imageFile != null) {
-        print('showing image from local file');
-
-        return Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: <Widget>[
-            Image.file(
-              _imageFile,
-              fit: BoxFit.cover,
-              height: 250,
-            ),
-            FlatButton(
-              padding: EdgeInsets.all(16),
-              color: Colors.black54,
-              child: Text(
-                'Change Image',
-                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
-              ),
-              onPressed:() => getLocalImage(),
-            )
-          ],
-        );
-      } else if (_imageUrl != null) {
-        print('showing image from url');
-
-        return Stack(
-          alignment: AlignmentDirectional.bottomCenter,
-          children: <Widget>[
-            Image.network(
-              _imageUrl,
-              width: MediaQuery.of(context).size.width,
-              fit: BoxFit.cover,
-              height: 250,
-            ),
-            FlatButton(
-              padding: EdgeInsets.all(16),
-              color: Colors.black54,
-              child: Text(
-                'Change Image',
-                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
-              ),
-              onPressed: () => _getLocalImage(),
-            )
-          ],
-        );
-      }
-    }
-
-    _getLocalImage() async {
-      File imageFile =
-      await ImagePicker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxWidth: 400);
-
-      if (imageFile != null) {
-        setState(() {
-          _imageFile = imageFile;
-        });
-      }
-    }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

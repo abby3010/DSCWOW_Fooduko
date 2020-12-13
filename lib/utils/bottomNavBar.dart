@@ -38,7 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             setState(() {
               index = 1;
             });
-            Navigator.pushNamed(context, screens/addpost.dart);
+            Navigator.pushNamed(context, "");
           },
           child: Icon(
             Icons.add,

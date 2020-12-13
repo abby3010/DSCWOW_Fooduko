@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/authentication/firebase_auth_service.dart';
 import 'package:fooduko/landingpage.dart';
+import 'package:fooduko/screens/addpost.dart';
 import 'package:fooduko/screens/homepage.dart';
 import 'package:fooduko/screens/testingpage.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/":(context)=>LandingPage(),
           "/home":(context)=>HomePage(),
-          "/addRecipe": (context)=>TestScreen(),
+          "/addRecipe": (context)=>FormScreen(),
         },
       ),
     );
