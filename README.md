@@ -7,7 +7,7 @@ Indian Food has a vast variety and Indian cuisine consists of a variety of regio
 Given the diversity in soil, climate, culture, ethnic groups, and occupations, these cuisines 
 vary substantially and use locally available spices, herbs, vegetables, and fruits.🍄🧄🍆🌽
 
-This project is still at developent phase od SDLC.
+This project is still at development phase of SDLC.
 
 A few resources to get you started if this is your first Flutter project:
 
