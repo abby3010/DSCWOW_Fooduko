@@ -27,7 +27,7 @@ Receive recipes for cooking with the ingredients in your kitchen.<BR>
 # SAMPLE SHOTS:-
 <div>
   <img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/LOGIN.jpeg" align="left" width=250 height=450></img>
-  <img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/HOMEPAGEIMG.jpeg" align="middle" width=250 height=450></img>
+  <img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/HOMEPAGEIMG.jpeg" align="centre" width=250 height=450></img>
   <img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/ADD.jpeg" align="right" width=250 height=450></img>
-  </div>
+</div>
   
