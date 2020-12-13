@@ -24,3 +24,5 @@ Blogging for sharing new upcoming ideas and recipes by people everywhere.<BR>
 An Ingredients’ Tracker which needs the input of the amount of food you buy, so later it reminds you when you’ll need to refill and stock food again.<BR>
 Receive recipes for cooking with the ingredients in your kitchen.<BR>
 
+# SAMPLE SHOTS:-
+<img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/ADD.jpeg"></img>
