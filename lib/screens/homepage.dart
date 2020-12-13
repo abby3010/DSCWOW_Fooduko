@@ -71,40 +71,51 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                 color: Colors.white70,
               ),
-              child: Column(
-                children: [
-                  TextField(
-                    decoration: InputDecoration(),
-                    controller: _controller,
-                    onSubmitted: (String value) async {
-                      await showDialog<void>(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: const Text('Thanks!'),
-                            content: Text('You typed "$value".'),
-                            actions: <Widget>[
-                              FlatButton(
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Text('OK'),
+              child: Column(children: [
+                Container(
+                  height: 280,
+                  padding: EdgeInsets.symmetric(horizontal: 13, vertical: 8),
+                  width: MediaQuery.of(context).size.width,
+                  child: Card(
+                    child: Stack(
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                              image: NetworkImage(user.photoUrl),
+                              fit: BoxFit.fill),
                               ),
-                            ],
-                          );
-                        },
-                      );
-                    },
+                        ),
+                        Positioned(
+                          bottom: 2,
+                          child: Container(
+                            padding: EdgeInsets.all(7),
+                            height: 60,
+                            width: MediaQuery.of(context).size.width - 30,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Text(
+                              "Sample Blog",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  Text(
-                    user.email,
-                    style: TextStyle(fontSize: 30),
-                  ),
-
-                ],
-              ),
+                ),
+              ]),
+              // ],
             ),
           ),
+          // ),
         ],
       ),
       // floatingActionButton: FloatingActionButton(

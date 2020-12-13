@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
           "/":(context)=>LandingPage(),
           "/home":(context)=>HomePage(),
           "/addRecipe": (context)=>TestScreen(),
+          "/userInfo": (context)=>TestScreen(),
         },
       ),
     );
