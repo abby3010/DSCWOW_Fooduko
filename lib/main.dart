@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       create: (_) => FirebaseAuthService(),
       dispose: (_, AuthService authService) => authService.dispose(),
       child: MaterialApp(
-        title: 'B.Ed Notes',
+        title: 'Fooduko',
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
