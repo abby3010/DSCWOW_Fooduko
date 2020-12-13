@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:CWCFlutter/api/food_api.dart';
-import 'package:CWCFlutter/model/food.dart';
-import 'package:CWCFlutter/notifier/food_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -22,87 +19,78 @@ class FormScreenState extends State<FormScreen> {
   String _url;
   String _chefname;
   String _nutrients;
-  Food _currentFood;
   String _imageUrl;
   File _imageFile;
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
-    FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context, listen: false);
 
-    if (foodNotifier.currentFood != null) {
-      _currentFood = foodNotifier.currentFood;
-    } else {
-      _currentFood = Food();
-    }
 
-    _subingredients.addAll(_currentFood.subIngredients);
-    _imageUrl = _currentFood.image;
-  }
+    _showImage() {
+      if (_imageFile == null && _imageUrl == null) {
+        return Text("image placeholder");
+      } else if (_imageFile != null) {
+        print('showing image from local file');
 
-  _showImage() {
-    if (_imageFile == null && _imageUrl == null) {
-      return Text("image placeholder");
-    } else if (_imageFile != null) {
-      print('showing image from local file');
-
-      return Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: <Widget>[
-          Image.file(
-            _imageFile,
-            fit: BoxFit.cover,
-            height: 250,
-          ),
-          FlatButton(
-            padding: EdgeInsets.all(16),
-            color: Colors.black54,
-            child: Text(
-              'Change Image',
-              style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+        return Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: <Widget>[
+            Image.file(
+              _imageFile,
+              fit: BoxFit.cover,
+              height: 250,
             ),
-            onPressed: () => _getLocalImage(),
-          )
-        ],
-      );
-    } else if (_imageUrl != null) {
-      print('showing image from url');
+            FlatButton(
+              padding: EdgeInsets.all(16),
+              color: Colors.black54,
+              child: Text(
+                'Change Image',
+                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+              ),
+              onPressed:() => getLocalImage(),
+            )
+          ],
+        );
+      } else if (_imageUrl != null) {
+        print('showing image from url');
 
-      return Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: <Widget>[
-          Image.network(
-            _imageUrl,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-            height: 250,
-          ),
-          FlatButton(
-            padding: EdgeInsets.all(16),
-            color: Colors.black54,
-            child: Text(
-              'Change Image',
-              style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+        return Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: <Widget>[
+            Image.network(
+              _imageUrl,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
+              height: 250,
             ),
-            onPressed: () => _getLocalImage(),
-          )
-        ],
-      );
+            FlatButton(
+              padding: EdgeInsets.all(16),
+              color: Colors.black54,
+              child: Text(
+                'Change Image',
+                style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+              ),
+              onPressed: () => _getLocalImage(),
+            )
+          ],
+        );
+      }
     }
-  }
 
-  _getLocalImage() async {
-    File imageFile =
-    await ImagePicker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxWidth: 400);
+    _getLocalImage() async {
+      File imageFile =
+      await ImagePicker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxWidth: 400);
 
-    if (imageFile != null) {
-      setState(() {
-        _imageFile = imageFile;
-      });
+      if (imageFile != null) {
+        setState(() {
+          _imageFile = imageFile;
+        });
+      }
     }
-  }
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
 
   Widget _buildName() {
     return TextFormField(
