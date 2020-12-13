@@ -25,4 +25,5 @@ An Ingredients’ Tracker which needs the input of the amount of food you buy, s
 Receive recipes for cooking with the ingredients in your kitchen.<BR>
 
 # SAMPLE SHOTS:-
-<img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/ADD.jpeg" width=200 height=500></img>
+<div>
+<img src="https://github.com/abby3010/DSCWOW_Fooduko/blob/master/SAMPLES/ADD.jpeg" width=250 height=450></img>
