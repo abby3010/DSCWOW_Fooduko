@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:CWCFlutter/api/food_api.dart';
-import 'package:CWCFlutter/model/food.dart';
-import 'package:CWCFlutter/notifier/food_notifier.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
@@ -22,25 +19,25 @@ class FormScreenState extends State<FormScreen> {
   String _url;
   String _chefname;
   String _nutrients;
-  Food _currentFood;
+  // Food _currentFood;
   String _imageUrl;
   File _imageFile;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  @override
-  void initState() {
-    super.initState();
-    FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context, listen: false);
-
-    if (foodNotifier.currentFood != null) {
-      _currentFood = foodNotifier.currentFood;
-    } else {
-      _currentFood = Food();
-    }
-
-    _subingredients.addAll(_currentFood.subIngredients);
-    _imageUrl = _currentFood.image;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // FoodNotifier foodNotifier = Provider.of<FoodNotifier>(context, listen: false);
+  //
+  //   if (foodNotifier.currentFood != null) {
+  //     _currentFood = foodNotifier.currentFood;
+  //   } else {
+  //     _currentFood = Food();
+  //   }
+  //
+  //   _subingredients.addAll(_currentFood.subIngredients);
+  //   _imageUrl = _currentFood.image;
+  // }
 
   _showImage() {
     if (_imageFile == null && _imageUrl == null) {
@@ -106,7 +103,7 @@ class FormScreenState extends State<FormScreen> {
 
   Widget _buildName() {
     return TextFormField(
-      decoration: InputDecoration(labelText: 'Recipe Name'),
+      decoration: InputDecoration(labelText: _recipename),
       maxLength: 255,
       validator: (String value) {
         if (value.isEmpty) {
