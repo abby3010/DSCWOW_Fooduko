@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/landingpage.dart';
+import 'package:fooduko/screens/homepage.dart';
 // import 'package:fooduko/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
@@ -198,7 +199,7 @@ class _LoginPageState extends State<LoginPage> {
                 await authServiceProvider.signInWithGoogle();
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_context) => LandingPage()),
+                  MaterialPageRoute(builder: (_context) => HomePage()),
                 );
                 print("login successful");
               } catch (e) {

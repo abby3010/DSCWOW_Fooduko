@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/authentication/firebase_auth_service.dart';
 import 'package:fooduko/landingpage.dart';
+import 'package:fooduko/screens/homepage.dart';
+import 'package:fooduko/screens/testingpage.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -23,7 +25,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: LandingPage(),
+        // home: LandingPage(),
+        initialRoute: "/",
+        routes: {
+          "/":(context)=>LandingPage(),
+          "/home":(context)=>HomePage(),
+          "/addRecipe": (context)=>TestScreen(),
+        },
       ),
     );
   }
