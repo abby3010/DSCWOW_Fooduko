@@ -19,8 +19,8 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # FEATURES :-
-A Login SignUp using Google authentication and Firebase database.
-Blogging for sharing new upcoming ideas and recipes by people everywhere.
-An Ingredients’ Tracker which needs the input of the amount of food you buy, so later it reminds you when you’ll need to refill and stock food again.
-Receive recipes for cooking with the ingredients in your kitchen.
+A Login SignUp using Google authentication and Firebase database.<BR>
+Blogging for sharing new upcoming ideas and recipes by people everywhere.<BR>
+An Ingredients’ Tracker which needs the input of the amount of food you buy, so later it reminds you when you’ll need to refill and stock food again.<BR>
+Receive recipes for cooking with the ingredients in your kitchen.<BR>
 
