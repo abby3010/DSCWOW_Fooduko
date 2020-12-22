@@ -21,7 +21,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
     super.dispose();
   }
 
-  /// get firends text-fields
+  /// get ingredients text-fields
   List<Widget> _getIngredients() {
     List<Widget> ingredientsTextFields = [];
     for (int i = 0; i < ingredientsList.length; i++) {
@@ -42,7 +42,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
     return ingredientsTextFields;
   }
 
-  /// add / remove button
+  /// add or remove button
   Widget _addRemoveButton(bool add, int index) {
     return InkWell(
       onTap: () {
@@ -112,11 +112,8 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
 
-                //TODO: Ingredient's TextFields:
-                // ..._getIngredients(),
-
-                // TODO: Ingredient's search bar
-                // searchBarUI(),
+                // THe below function creates dynamic textfields
+                ..._getIngredients(),
 
                 SizedBox(
                   height: 30,
