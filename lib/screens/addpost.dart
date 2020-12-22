@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-// import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+class AddRecipe extends StatefulWidget {
+  AddRecipe({Key key}) : super(key: key);
 
-class FormScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return FormScreenState();
+    return AddRecipeState();
   }
 }
 
-class FormScreenState extends State<FormScreen> {
+class AddRecipeState extends State<AddRecipe> {
   String _recipename;
   String _ingredients;
   String _procedure;
@@ -58,7 +58,10 @@ class FormScreenState extends State<FormScreen> {
             color: Colors.black54,
             child: Text(
               'Change Image',
-              style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w400),
             ),
             onPressed: () => _getLocalImage(),
           )
@@ -81,7 +84,10 @@ class FormScreenState extends State<FormScreen> {
             color: Colors.black54,
             child: Text(
               'Change Image',
-              style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w400),
             ),
             onPressed: () => _getLocalImage(),
           )
@@ -92,7 +98,7 @@ class FormScreenState extends State<FormScreen> {
 
   _getLocalImage() async {
     File imageFile =
-    await ImagePicker.pickImage(source: ImageSource.gallery, imageQuality: 50, maxWidth: 400);
+        await ImagePicker.pickImage(source: ImageSource.gallery, maxWidth: 400);
 
     if (imageFile != null) {
       setState(() {
@@ -154,7 +160,6 @@ class FormScreenState extends State<FormScreen> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Enter Youtube Channel link'),
       keyboardType: TextInputType.url,
-
       onSaved: (String value) {
         _url = value;
       },
@@ -189,44 +194,44 @@ class FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Form Demo")),
-      body: Container(
-        margin: EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildName(),
-              _buildEmail(),
-              _buildPassword(),
-              _builURL(),
-              _buildPhoneNumber(),
-              _buildCalories(),
-              SizedBox(height: 100),
-              RaisedButton(
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
-                ),
-                onPressed: () {
-                  if (!_formKey.currentState.validate()) {
-                    return;
-                  }
-
-                  _formKey.currentState.save();
-
-                  print(_recipename);
-                  print(_ingredients);
-                  print(_procedure);
-                  print(_url);
-                  print(_chefname);
-                  print(_nutrients);
-
-                  //Send to API
-                },
-              )
-            ],
+      appBar: AppBar(
+        toolbarHeight: MediaQuery.of(context).size.height*0.065,
+        title: Text("Add Recipe"),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(24),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildName(),
+                _buildEmail(),
+                _buildPassword(),
+                _builURL(),
+                _buildPhoneNumber(),
+                _buildCalories(),
+                SizedBox(height: 100),
+                RaisedButton(
+                  child: Text(
+                    'Submit',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      _formKey.currentState.save();
+                      print(_recipename);
+                      print(_ingredients);
+                      print(_procedure);
+                      print(_url);
+                      print(_chefname);
+                      print(_nutrients);
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
