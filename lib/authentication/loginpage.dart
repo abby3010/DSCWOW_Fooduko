@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/landingpage.dart';
+import 'package:fooduko/screens/homepage.dart';
 // import 'package:fooduko/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
@@ -91,14 +92,23 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(25),
-            child: Form(
-              key: formKey,
-              child: Column(
-                children: buildTextInputs() + buildSubmitButtons(),
+      // backgroundColor: Color(0xFFEDE9EA),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage("assets/images/food_1.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(25),
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: buildTextInputs() + buildSubmitButtons(),
+                ),
               ),
             ),
           ),
@@ -114,10 +124,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Text(
             "Fooduko.",
-            style: TextStyle(
-              fontSize: 53,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Theme.of(context).textTheme.title,
           ),
         ],
       ),
@@ -142,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
 
       // Password TextField
       Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 20),
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 30),
         child: TextFormField(
           controller: passwordController,
           decoration: InputDecoration(
@@ -198,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                 await authServiceProvider.signInWithGoogle();
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_context) => LandingPage()),
+                  MaterialPageRoute(builder: (_context) => HomePage()),
                 );
                 print("login successful");
               } catch (e) {
@@ -257,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
         FlatButton(
           child: Text(
             "Create an Account",
-            style: TextStyle(fontSize: 20.0),
+            style: TextStyle(fontSize: 22.0),
           ),
           onPressed: moveToRegister,
         ),
@@ -284,11 +291,12 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ],
         ),
+        SizedBox(height: 10,),
         // Create a Login Panel
         FlatButton(
           child: Text(
             "Have an Account? Login",
-            style: TextStyle(fontSize: 20.0),
+            style: TextStyle(fontSize: 22.0),
           ),
           onPressed: moveToLogin,
         ),

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/authentication/firebase_auth_service.dart';
 import 'package:fooduko/landingpage.dart';
+import 'package:fooduko/screens/addpost.dart';
+import 'package:fooduko/screens/homepage.dart';
+import 'package:fooduko/screens/testingpage.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -19,11 +22,25 @@ class MyApp extends StatelessWidget {
       create: (_) => FirebaseAuthService(),
       dispose: (_, AuthService authService) => authService.dispose(),
       child: MaterialApp(
-        title: 'B.Ed Notes',
+        debugShowCheckedModeBanner: false,
+        title: 'Fooduko',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
+          // primarySwatch: Colors.indigo,
+          brightness: Brightness.light,
+          primaryColor: Color(0xFF003C7E),
+          accentColor: Color(0xFF4487C7),
+          textTheme: TextTheme(
+              title: TextStyle(color: Colors.green[700], fontSize: 50, fontWeight: FontWeight.w700,),
+              // headline6: TextStyle(color: Color(0xFF003C7E), fontSize: 20, fontWeight: FontWeight.w700,),
+            ),
         ),
-        home: LandingPage(),
+        // home: LandingPage(),
+        initialRoute: "/",
+        routes: {
+          "/": (context) => LandingPage(),
+          "/home": (context) => HomePage(),
+          "/addRecipe": (context) => FormScreen(),
+        },
       ),
     );
   }
