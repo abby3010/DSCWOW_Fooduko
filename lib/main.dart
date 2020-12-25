@@ -5,6 +5,7 @@ import 'package:fooduko/landingpage.dart';
 import 'package:fooduko/screens/addNewRecipe.dart';
 import 'package:fooduko/screens/homepage.dart';
 import 'package:fooduko/screens/userInfo.dart';
+import 'package:fooduko/utils/routePage.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -32,11 +33,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        // home: LandingPage(),
         initialRoute: "/",
         routes: {
           "/": (context) => LandingPage(),
-          "/home": (context) => HomePage(),
+          "/home": (context) => RoutePage(),
           "/addRecipe": (context) => AddRecipeForm(),
           "/userInfo": (context) => UserInformation(),
         },

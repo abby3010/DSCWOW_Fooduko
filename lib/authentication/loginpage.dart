@@ -16,6 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
   FormType _formType = FormType.login;
   // Checking Submission from the Form
   bool validateAndSave() {
@@ -160,7 +161,24 @@ class _LoginPageState extends State<LoginPage> {
           },
           obscureText: true,
         ),
-      )
+      ),
+      _formType == FormType.register
+          ? TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+                labelText: "Your Name",
+              ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return "Enter your name";
+                }
+                return null;
+              },
+            )
+          : SizedBox(
+              height: 10,
+            ),
+      SizedBox(height: 10),
     ];
   }
 
