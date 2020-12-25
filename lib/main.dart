@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fooduko/authentication/auth_service.dart';
 import 'package:fooduko/authentication/firebase_auth_service.dart';
 import 'package:fooduko/landingpage.dart';
-import 'package:fooduko/screens/addRecipePage.dart';
+import 'package:fooduko/screens/addNewRecipe.dart';
 import 'package:fooduko/screens/homepage.dart';
 import 'package:fooduko/screens/userInfo.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           dispose: (_, AuthService authService) => authService.dispose(),
         ),
 
+
       ],
       child: MaterialApp(
         title: 'Fooduko',
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/": (context) => LandingPage(),
           "/home": (context) => HomePage(),
-          "/addRecipe": (context) => AddRecipePage(),
+          "/addRecipe": (context) => AddRecipeForm(),
           "/userInfo": (context) => UserInformation(),
         },
       ),
