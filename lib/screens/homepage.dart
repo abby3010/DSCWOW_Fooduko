@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fooduko/utils/searchBarUI.dart';
+import 'package:google_fonts/google_fonts.dart';
 // import 'package:fooduko/authentication/auth_service.dart';
 // import 'package:provider/provider.dart';
 
@@ -10,30 +12,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     // final authUser = Provider.of<AuthService>(context);
     // final user = authUser.currentUser();
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height*0.065,
-        title: Text("Fooduko"),
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
+        title: Text(
+          "Fooduko",
+          style: GoogleFonts.notoSans(
+            color: Colors.white,
+            textStyle: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.search),
-            onPressed: (){},
+            onPressed: () {
+              showSearch(context: context, delegate: SearchPage());
+            },
           ),
           IconButton(
             icon: Icon(Icons.more_vert),
-            onPressed: (){},
+            onPressed: () {},
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          SingleChildScrollView(
-            child: Container(
+      drawer: Drawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            // CustomAppBar(title: "Foodoku", hintText: "Search",),
+            Container(
               decoration: BoxDecoration(
                 color: Colors.white70,
               ),
@@ -87,9 +101,9 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-          ),
-          // ),
-        ],
+            // ),
+          ],
+        ),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {},

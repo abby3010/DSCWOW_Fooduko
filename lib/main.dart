@@ -29,9 +29,17 @@ class MyApp extends StatelessWidget {
 
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Fooduko',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
+          // primarySwatch: Colors.indigo,
+          brightness: Brightness.light,
+          primaryColor: Color(0xFF003C7E),
+          accentColor: Color(0xFF4487C7),
+          textTheme: TextTheme(
+              title: TextStyle(color: Colors.blueGrey[800], fontSize: 20, fontWeight: FontWeight.w700,),
+              headline: TextStyle(color: Colors.green[700], fontSize: 50, fontWeight: FontWeight.w700,),
+            ),
         ),
         initialRoute: "/",
         routes: {

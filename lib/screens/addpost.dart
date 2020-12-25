@@ -115,42 +115,60 @@ class FormScreenState extends State<FormScreen> {
     return Scaffold(
       appBar: AppBar(title: Text("Form Demo")),
       body: Container(
-        margin: EdgeInsets.all(24),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildName(),
-              _buildEmail(),
-              _buildPassword(),
-              _builURL(),
-              _buildPhoneNumber(),
-              _buildCalories(),
-              SizedBox(height: 100),
-              RaisedButton(
-                child: Text(
-                  'Submit',
-                  style: TextStyle(color: Colors.blue, fontSize: 16),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage("assets/images/food_3.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.all(24),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _buildName(),
+                    _buildEmail(),
+                    _buildPassword(),
+                    _builURL(),
+                    _buildPhoneNumber(),
+                    _buildCalories(),
+                    SizedBox(height: 100),
+                    RaisedButton(
+                      padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                      ),
+                      color: Theme.of(context).accentColor,
+                      textColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0),
+                      ),
+                      onPressed: () {
+                        if (!_formKey.currentState.validate()) {
+                          return;
+                        }
+
+                        _formKey.currentState.save();
+
+                        print(_recipename);
+                        print(_ingredients);
+                        print(_procedure);
+                        print(_url);
+                        print(_chefname);
+                        print(_nutrients);
+
+                        //Send to API
+                      },
+                    )
+                  ],
                 ),
-                onPressed: () {
-                  if (!_formKey.currentState.validate()) {
-                    return;
-                  }
-
-                  _formKey.currentState.save();
-
-                  print(_recipename);
-                  print(_ingredients);
-                  print(_procedure);
-                  print(_url);
-                  print(_chefname);
-                  print(_nutrients);
-
-                  //Send to API
-                },
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
