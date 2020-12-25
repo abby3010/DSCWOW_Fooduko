@@ -95,7 +95,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height * 0.065,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         title: Text("Add New Recipe"),
       ),
       body: Container(

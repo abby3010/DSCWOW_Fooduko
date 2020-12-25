@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
           primaryColor: Color(0xFF003C7E),
           accentColor: Color(0xFF4487C7),
           textTheme: TextTheme(
-              title: TextStyle(color: Colors.green[700], fontSize: 50, fontWeight: FontWeight.w700,),
-              // headline6: TextStyle(color: Color(0xFF003C7E), fontSize: 20, fontWeight: FontWeight.w700,),
+              title: TextStyle(color: Colors.blueGrey[800], fontSize: 20, fontWeight: FontWeight.w700,),
+              headline: TextStyle(color: Colors.green[700], fontSize: 50, fontWeight: FontWeight.w700,),
             ),
         ),
         // home: LandingPage(),

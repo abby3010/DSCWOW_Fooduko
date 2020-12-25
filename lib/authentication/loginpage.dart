@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Text(
             "Fooduko.",
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.headline,
           ),
         ],
       ),
