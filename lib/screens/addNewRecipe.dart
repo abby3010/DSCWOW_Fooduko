@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fooduko/authentication/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class AddRecipeForm extends StatefulWidget {
   @override
@@ -80,7 +83,9 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Theme.of(context).cursorColor : Theme.of(context).unselectedWidgetColor,
+          color: (add)
+              ? Theme.of(context).cursorColor
+              : Theme.of(context).unselectedWidgetColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
@@ -106,7 +111,9 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
         width: 30,
         height: 30,
         decoration: BoxDecoration(
-          color: (add) ? Theme.of(context).cursorColor : Theme.of(context).unselectedWidgetColor,
+          color: (add)
+              ? Theme.of(context).cursorColor
+              : Theme.of(context).unselectedWidgetColor,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Icon(
@@ -119,6 +126,8 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<AuthService>(context).currentUser();
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
@@ -163,7 +172,7 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                 ),
                 // Cooking Time TextField
                 TextFormField(
-                  onSaved: (value){
+                  onSaved: (value) {
                     cookingTime = int.parse(value);
                   },
                   keyboardType: TextInputType.number,
@@ -214,9 +223,9 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                 ),
                 // Cooking Time TextField
                 TextFormField(
-                  onSaved: (value){
+                  onSaved: (value) {
                     servings = int.parse(value);
-                  } ,
+                  },
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     filled: true,
@@ -258,7 +267,6 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                   },
                 ),
 
-
                 Text(
                   "Add Ingredients",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
@@ -275,15 +283,39 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                   "Procedure",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
-            // The below function creates dynamic textFields for steps
+                // The below function creates dynamic textFields for steps
                 ..._getProcedureSteps(),
                 RaisedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
                     }
                     print(ingredientsList);
                     print(stepsList);
+
+                    Map<String, String> ingredients = {};
+                    Map<String, String> steps = {};
+                    for (int i = 0; i < ingredientsList.length; i++) {
+                      ingredients[i.toString()] = ingredientsList[i];
+                    }
+
+                    for (int i = 0; i < stepsList.length; i++) {
+                      steps[i.toString()] = stepsList[i];
+                    }
+                    await FirebaseFirestore.instance
+                        .collection("Users")
+                        .doc(user.email)
+                        .update({
+                          "ingredients": FieldValue.arrayUnion([ingredients]),
+                          "procedure": FieldValue.arrayUnion([steps]),
+                          "cooking_time": FieldValue.arrayUnion([cookingTime]),
+                          "servings": FieldValue.arrayUnion([servings]),
+                        })
+                        .then((value) =>
+                            print("Successfully Added the recipe details."))
+                        .catchError((error) {
+                          print("Errorrrrrrrr:::::::::::::::::::::::$error");
+                        });
                   },
                   child: Text(
                     "Upload",
@@ -334,7 +366,7 @@ class _IngredientTextFieldsState extends State<IngredientTextFields> {
       onChanged: (v) => _AddRecipeFormState.ingredientsList[widget.index] = v,
       decoration: InputDecoration(
         filled: true,
-        hintText: "Ingredient ${widget.index+1}",
+        hintText: "Ingredient ${widget.index + 1}",
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red, //this has no effect
@@ -367,13 +399,12 @@ class _IngredientTextFieldsState extends State<IngredientTextFields> {
         ),
       ),
       validator: (v) {
-        if (v.trim().isEmpty) return "Enter Ingredient ${widget.index+1}";
+        if (v.trim().isEmpty) return "Enter Ingredient ${widget.index + 1}";
         return null;
       },
     );
   }
 }
-
 
 class ProcedureTextFields extends StatefulWidget {
   final int index;
@@ -399,8 +430,7 @@ class _ProcedureTextFieldsState extends State<ProcedureTextFields> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _stepController.text =
-          _AddRecipeFormState.stepsList[widget.index] ?? '';
+      _stepController.text = _AddRecipeFormState.stepsList[widget.index] ?? '';
     });
     return TextFormField(
       keyboardType: TextInputType.multiline,
@@ -412,7 +442,7 @@ class _ProcedureTextFieldsState extends State<ProcedureTextFields> {
       onChanged: (v) => _AddRecipeFormState.stepsList[widget.index] = v,
       decoration: InputDecoration(
         filled: true,
-        hintText: "Step ${widget.index+1}",
+        hintText: "Step ${widget.index + 1}",
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.red, //this has no effect
@@ -445,7 +475,7 @@ class _ProcedureTextFieldsState extends State<ProcedureTextFields> {
         ),
       ),
       validator: (v) {
-        if (v.trim().isEmpty) return "Enter Step ${widget.index+1}";
+        if (v.trim().isEmpty) return "Enter Step ${widget.index + 1}";
         return null;
       },
     );

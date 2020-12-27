@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      drawer: Drawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
