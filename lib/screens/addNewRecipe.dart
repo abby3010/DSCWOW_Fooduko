@@ -285,7 +285,14 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                 ),
                 // The below function creates dynamic textFields for steps
                 ..._getProcedureSteps(),
+
+                // Upload Button
                 RaisedButton(
+                  child: Text(
+                    "Upload",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  color: Colors.green,
                   onPressed: () async {
                     if (_formKey.currentState.validate()) {
                       _formKey.currentState.save();
@@ -317,11 +324,6 @@ class _AddRecipeFormState extends State<AddRecipeForm> {
                           print("Errorrrrrrrr:::::::::::::::::::::::$error");
                         });
                   },
-                  child: Text(
-                    "Upload",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  color: Colors.green,
                 ),
               ],
             ),
@@ -481,57 +483,3 @@ class _ProcedureTextFieldsState extends State<ProcedureTextFields> {
     );
   }
 }
-
-// class TextFieldUI extends StatelessWidget {
-//
-//   void Function(String) onSavedFunction;
-//   String hintText;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextFormField(
-//       onSaved: onSavedFunction,
-//       keyboardType: TextInputType.number,
-//       decoration: InputDecoration(
-//         filled: true,
-//         hintText: hintText,
-//         border: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: Colors.red, //this has no effect
-//           ),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//         enabledBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: Theme.of(context).textSelectionColor,
-//           ),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//         disabledBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: Colors.grey,
-//           ),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//         errorBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: Colors.red,
-//           ),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//         focusedBorder: OutlineInputBorder(
-//           borderSide: BorderSide(
-//             color: Colors.blue,
-//           ),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//       ),
-//       (validatrMessage!=null)?
-//       validator: (v) {
-//         if (v.trim().isEmpty) return "Enter no. of servings";
-//         return null;
-//       },
-//
-//     );
-//   }
-// }

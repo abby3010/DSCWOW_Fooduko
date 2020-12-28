@@ -39,11 +39,11 @@ class _LoginPageState extends State<LoginPage> {
     if (validateAndSave()) {
       try {
         if (_formType == FormType.login) {
-          await authService.signInwithEmailPassword(
+          await authService.signInWithEmailPassword(
               emailController.text, passwordController.text);
         } else {
-          await authService.createUser(
-              emailController.text, passwordController.text);
+          await authService.createUser(emailController.text,
+              passwordController.text, nameController.text);
         }
         Navigator.push(
           context,
@@ -309,7 +309,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ],
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         // Create a Login Panel
         FlatButton(
           child: Text(
